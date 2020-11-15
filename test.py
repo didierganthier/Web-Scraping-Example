@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
+"""
 links = []
 
 for i in range(26):
@@ -21,3 +22,8 @@ print(len(links))
 with open('urls.txt', 'w') as file:
      for link in links:
          file.write(links + '\n')
+
+with open('urls.txt', 'r') as file:
+    for row in file:
+        print(row)
+"""
