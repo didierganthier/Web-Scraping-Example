@@ -27,3 +27,12 @@ with open('urls.txt', 'r') as file:
     for row in file:
         print(row)
 """
+
+url = "http://example.webscraping.com/places/default/view/Brazil-32"
+response = requests.get(url)
+if response.ok:
+    soup = BeautifulSoup(response.text, features="html.parser")
+    country = soup.find('tr', {'id': 'places_country__row'}).find('td', {'class': 'w2p_fw'})
+    pop = soup.find('tr', {'id': 'places_population__row'}).find('td', {'class': 'w2p_fw'})
+    print('Country: ' + country.text + ', Population: ' + pop.text)
+   
