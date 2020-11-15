@@ -16,4 +16,8 @@ for i in range(26):
             link = a['href']
             links.append(url + link)
         time.sleep(3)    
-print(links)    
+print(len(links))
+
+with open('urls.txt', 'w') as file:
+     for link in links:
+         file.write(links + '\n')
