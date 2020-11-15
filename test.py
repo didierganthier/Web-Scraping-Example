@@ -6,6 +6,11 @@ url = 'http://example.webscraping.com/'
 response = requests.get(url)
 
 if response.ok:
+    links = []
     soup = BeautifulSoup(response.text, features="html.parser")
     tds = soup.findAll('td')
-    [print(str(td) + '\n\n' ) for td in tds]
+    for td in tds:
+        a = td.find('a')
+        link = a['href']
+        links.append(link)
+    print(links)    
