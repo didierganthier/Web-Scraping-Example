@@ -12,5 +12,5 @@ if response.ok:
     for td in tds:
         a = td.find('a')
         link = a['href']
-        links.append(link)
+        links.append(url + link)
     print(links)    
