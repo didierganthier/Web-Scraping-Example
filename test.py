@@ -1,16 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
-url = 'http://example.webscraping.com/'
+links = []
 
-response = requests.get(url)
-
-if response.ok:
-    links = []
-    soup = BeautifulSoup(response.text, features="html.parser")
-    tds = soup.findAll('td')
-    for td in tds:
-        a = td.find('a')
-        link = a['href']
-        links.append(url + link)
-    print(links)    
+for i in range(26):
+    url = 'http://example.webscraping.com/places/default/index/' + str(i)
+    response = requests.get(url)
+    print(response)
+    if response.ok:
+        soup = BeautifulSoup(response.text, features="html.parser")
+        tds = soup.findAll('td')
+        for td in tds:
+            a = td.find('a')
+            link = a['href']
+            links.append(url + link)
+        time.sleep(3)    
+print(links)    
